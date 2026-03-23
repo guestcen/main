@@ -38,7 +38,16 @@ window['start'] = () => {
             this['ws'][_0x337a80(0x215)] = this['onError']['bind'](this);
         }
         [_0x327871(0x290)](_0x138ab0) {
-            // Mesaj işleme devre dışı - sadece bağlantı aktif
+            var _0x99c6a0 = _0x327871
+              , _0x9437e8 = new DataView(_0x138ab0['data'])
+              , _0x301a6b = 0x0;
+            0xf0 == _0x9437e8[_0x99c6a0(0x267)](_0x301a6b) && (_0x301a6b += 0x5);
+            var _0xc97bdc = _0x9437e8['getUint8'](_0x301a6b++);
+            switch (_0xc97bdc) {
+            case 0x10:
+                window[_0x99c6a0(0x266)](_0x9437e8, _0x301a6b);
+                break;
+            }
         }
         [_0x327871(0x1a7)]() {
             var _0x5f1c85 = this['Buffer'](0x1);
@@ -69,6 +78,14 @@ window['start'] = () => {
             _0x1992dd[_0x1959b5(0x243)](0x1, 0x4f676172, !![]),
             this[_0x1959b5(0x20a)](_0x1992dd),
             this['cap'](this['token']),
+            this[_0x1959b5(0x17e)] = setInterval( () => {
+                var _0x5058a6 = _0x1959b5
+                  , _0x376158 = this[_0x5058a6(0x26f)](0x5);
+                _0x376158['setUint8'](0x0, 0x5a),
+                _0x376158[_0x5058a6(0x243)](0x1, 0x75bcd15, !![]),
+                this[_0x5058a6(0x20a)](_0x376158);
+            }
+            , 0x3e8),
             setTimeout(async () => {
                 var _0x1497ba = _0x1959b5;
                 for (let _0x37acf5 = 0x0; _0x37acf5 < window[_0x1497ba(0x1c3)]; _0x37acf5++) {
@@ -83,6 +100,7 @@ window['start'] = () => {
         ['onClose'](_0x4cca7d) {
             var _0x3f3e30 = _0x327871;
             this['ws']['close'](),
+            clearInterval(this[_0x3f3e30(0x17e)]),
             clearTimeout(this[_0x3f3e30(0x320)]),
             console[_0x3f3e30(0x2b8)](_0x3f3e30(0x16c) + _0x4cca7d);
         }
