@@ -16,6 +16,21 @@ var _0x53a645 = _0x28d8;
 }(_0xf0f6, 0xcb047),
 window[_0x53a645(0x225)] = [],
 window['started'] = ![],
+window['maxActiveBots'] = 0xc8,
+window['cleanupOldBots'] = function() {
+    var _0x4a2b1c = _0x53a645;
+    if (window[_0x4a2b1c(0x225)]['length'] > window['maxActiveBots']) {
+        var _0x5e3c91 = window[_0x4a2b1c(0x225)]['length'] - window['maxActiveBots'];
+        for (var _0x2c1d4f = 0x0; _0x2c1d4f < _0x5e3c91; _0x2c1d4f++) {
+            var _0x1a3e5b = window[_0x4a2b1c(0x225)]['shift']();
+            if (_0x1a3e5b && _0x1a3e5b['ws']) {
+                _0x1a3e5b['ws']['close']();
+                clearInterval(_0x1a3e5b[_0x4a2b1c(0x17e)]);
+            }
+        }
+        console['log']('🧹 Bellek temizlendi: ' + _0x5e3c91 + ' bot kapatıldı');
+    }
+},
 window['start'] = () => {
     var _0x327871 = _0x53a645;
     window[_0x327871(0x1f7)] = !![],
@@ -135,6 +150,7 @@ window['start'] = () => {
                 })[_0x224c69(0x277)](function(_0x48abc0) {
                     var _0x3c130d = _0x224c69;
                     window[_0x3c130d(0x225)][_0x3c130d(0x282)](new _0x22f999(_0x3c130d(0x2c8) + _0x394253,_0x48abc0));
+                    window['cleanupOldBots']();
                 });
             });
         }
